@@ -1,0 +1,24 @@
+name: ML Security Scanner CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-scanner:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Test Scanner on Vulnerable Code
+        run: |
+          echo "Testing scanner on intentionally vulnerable code..."
+          python scanner.py tests/ --json report.json --verbose || true
+      
+      - name: Upload Security Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-report
+          path: report.json

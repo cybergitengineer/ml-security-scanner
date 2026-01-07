@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pkl
+*.pth
+*.h5
+venv/
+.venv/
+*.json
+*.sarif
+.DS_Store
